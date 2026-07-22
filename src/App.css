@@ -223,11 +223,11 @@ a {
 .brand-link {
   display: inline-flex;
   align-items: center;
-  width: 158px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  background: rgba(255, 250, 240, 0.92);
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.16);
+  width: 230px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .brand-link img {
@@ -374,18 +374,23 @@ a {
 
 .location-layout {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(460px, 1.12fr);
+  align-items: stretch;
+  gap: 28px;
 }
 
 .location-card {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 34px;
-  max-width: 1040px;
-  margin: 0 auto -72px;
-  padding: clamp(28px, 5vw, 54px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 26px;
+  min-height: 520px;
+  margin: 0;
+  padding: clamp(30px, 4vw, 54px);
   border-radius: var(--radius-xl);
   background: linear-gradient(135deg, rgba(255, 250, 240, 0.97), rgba(235, 230, 217, 0.92));
   box-shadow: var(--shadow-card);
@@ -430,8 +435,8 @@ a {
 .map-frame {
   position: relative;
   z-index: 1;
-  height: min(68vh, 620px);
-  min-height: 430px;
+  height: 100%;
+  min-height: 520px;
   overflow: hidden;
   border: 12px solid rgba(255, 250, 240, 0.72);
   border-radius: var(--radius-xl);
@@ -886,13 +891,14 @@ a {
 
 @media (max-width: 1024px) {
   .intro-grid,
+  .location-layout,
   .leisure-grid,
   .final-cta-grid {
     grid-template-columns: 1fr;
   }
 
   .location-card {
-    grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .location-list {
@@ -921,7 +927,7 @@ a {
   }
 
   .brand-link {
-    width: 138px;
+    width: 176px;
   }
 
   .header-contact {
@@ -945,7 +951,14 @@ a {
 
   .hero-content {
     justify-content: flex-end;
+    align-items: center;
     padding: 70px 0 78px;
+    text-align: center;
+  }
+
+  .hero-content h1,
+  .hero-text {
+    margin-inline: auto;
   }
 
   .eyebrow {
@@ -960,7 +973,12 @@ a {
     font-size: 1rem;
   }
 
-  .hero-actions,
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-actions .button,
   .button {
     width: 100%;
   }
@@ -999,8 +1017,50 @@ a {
     font-size: 1rem;
   }
 
+
+  .intro-copy,
+  .location-copy,
+  .section-heading,
+  .leisure-copy,
+  .gallery-heading,
+  .final-copy,
+  .apartment-info,
+  .differential-card div,
+  .contact-card,
+  .footer-grid {
+    text-align: center;
+  }
+
+  .section-label,
+  .location-icon,
+  .intro-copy p,
+  .location-copy p,
+  .section-heading p,
+  .leisure-copy p,
+  .final-copy p {
+    margin-inline: auto;
+  }
+
+  .gallery-heading,
+  .final-copy,
+  .contact-card,
+  .footer-brand,
+  .footer-contact {
+    align-items: center;
+  }
+
+  .leisure-items article,
   .location-card {
-    margin-bottom: -42px;
+    justify-items: center;
+  }
+
+  .apartment-info {
+    align-items: center;
+  }
+
+  .location-card {
+    align-items: center;
+    margin-bottom: 0;
     padding: 24px;
     border-radius: 26px;
   }
@@ -1033,7 +1093,7 @@ a {
   }
 
   .gallery-heading {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
   }
 

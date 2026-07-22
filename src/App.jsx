@@ -19,6 +19,7 @@ import {
 import "./App.css";
 
 import logoAurora from "./assets/img/logo-aurora.svg";
+import logoAuroraHeader from "./assets/img/logo-aurora-header.svg";
 import heroAurora from "./assets/img/hero-aurora.jpg";
 import auroraFacade from "./assets/img/aurora-facade.jpg";
 import auroraLifestyle from "./assets/img/aurora-lifestyle.jpg";
@@ -137,9 +138,9 @@ const gallery = [
 const sectionIds = ["inicio", "conceito", "localizacao", "apartamentos", "lazer", "diferenciais", "galeria", "contato"];
 
 const WHATSAPP_NUMBER = "5583999999999";
-const ADDRESS = "Rua Alzira Ramos de Figueiredo I, 274 — Itararé, Campina Grande/PB";
+const ADDRESS = "Rua Alzira Ramos de Figueiredo, 300 — Itararé, Campina Grande/PB";
 const MAP_SRC =
-  "https://www.google.com/maps?q=Rua%20Alzira%20Ramos%20de%20Figueiredo%20I%2C%20274%20-%20Itarar%C3%A9%2C%20Campina%20Grande%20PB&output=embed";
+  "https://www.google.com/maps?q=Rua%20Alzira%20Ramos%20de%20Figueiredo%2C%20300%20-%20Itarar%C3%A9%2C%20Campina%20Grande%20PB&output=embed";
 
 function SectionLabel({ children }) {
   return <span className="section-label">{children}</span>;
@@ -244,7 +245,7 @@ export default function LandingPage() {
 
         <header className="site-header">
           <a href="#inicio" className="brand-link" aria-label="Aurora Residence">
-            <img src={logoAurora} alt="Aurora Residence" />
+            <img src={logoAuroraHeader} alt="Aurora Residence" />
           </a>
 
           <a className="header-contact" href={whatsappLink}>
