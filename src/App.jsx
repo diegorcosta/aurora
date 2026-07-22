@@ -210,16 +210,6 @@ export default function LandingPage() {
   };
 
   useEffect(() => {
-    let icon = document.querySelector("link[rel='icon']");
-
-    if (!icon) {
-      icon = document.createElement("link");
-      icon.rel = "icon";
-      document.head.appendChild(icon);
-    }
-
-    icon.setAttribute("type", "image/svg+xml");
-    icon.setAttribute("href", logoAurora);
     document.title = "Aurora Residence | Um novo ciclo começa aqui";
   }, []);
 
