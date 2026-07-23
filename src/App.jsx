@@ -435,11 +435,18 @@ export default function LandingPage() {
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeLeft}
           >
-            <img
-              src={leisureItems[activeLeisure].image}
-              alt={`${leisureItems[activeLeisure].title} do Aurora Residence`}
-            />
-            <figcaption>
+            <div className="leisure-carousel-stage" aria-live="polite">
+              {leisureItems.map((item, index) => (
+                <img
+                  key={item.title}
+                  className={`leisure-slide ${activeLeisure === index ? "active" : ""}`}
+                  src={item.image}
+                  alt={`${item.title} do Aurora Residence`}
+                  aria-hidden={activeLeisure !== index}
+                />
+              ))}
+            </div>
+            <figcaption key={leisureItems[activeLeisure].title}>
               <span>{String(activeLeisure + 1).padStart(2, "0")}</span>
               {leisureItems[activeLeisure].title}
             </figcaption>
