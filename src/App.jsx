@@ -24,6 +24,14 @@ import heroAurora from "./assets/img/hero-aurora.jpg";
 import auroraFacade from "./assets/img/aurora-facade.jpg";
 import auroraLifestyle from "./assets/img/aurora-lifestyle.jpg";
 import auroraLazer from "./assets/img/aurora-lazer.jpg";
+import auroraExp01 from "./assets/img/aurora-exp-01.jpg";
+import auroraExp02 from "./assets/img/aurora-exp-02.jpg";
+import auroraExp03 from "./assets/img/aurora-exp-03.jpg";
+import auroraExp04 from "./assets/img/aurora-exp-04.jpg";
+import auroraExp05 from "./assets/img/aurora-exp-05.jpg";
+import auroraExp06 from "./assets/img/aurora-exp-06.jpg";
+import auroraExp07 from "./assets/img/aurora-exp-07.jpg";
+import auroraExp08 from "./assets/img/aurora-exp-08.jpg";
 import folderLado01 from "./assets/img/folder-lado-01.jpg";
 import folderLado02 from "./assets/img/folder-lado-02.jpg";
 import apt01 from "./assets/img/apt01.png";
@@ -94,14 +102,14 @@ const apartments = [
 ];
 
 const leisureItems = [
-  { title: "Academia", icon: Dumbbell },
-  { title: "Piscina", icon: Waves },
-  { title: "Playground", icon: Sparkles },
-  { title: "Pet place", icon: PawPrint },
-  { title: "Coworking", icon: Wifi },
-  { title: "Salão de festas", icon: Home },
-  { title: "Espaço gourmet", icon: Building2 },
-  { title: "Gazebo", icon: Trees },
+  { title: "Academia", icon: Dumbbell, image: auroraExp01 },
+  { title: "Piscina", icon: Waves, image: auroraExp02 },
+  { title: "Playground", icon: Sparkles, image: auroraExp03 },
+  { title: "Pet place", icon: PawPrint, image: auroraExp04 },
+  { title: "Coworking", icon: Wifi, image: auroraExp05 },
+  { title: "Salão de festas", icon: Home, image: auroraExp06 },
+  { title: "Espaço gourmet", icon: Building2, image: auroraExp07 },
+  { title: "Espaço Zen", icon: Trees, image: auroraExp08 },
 ];
 
 const differentials = [
@@ -185,6 +193,7 @@ function NextSectionButton() {
 export default function LandingPage() {
   const galleryRef = useRef(null);
   const [activeGallery, setActiveGallery] = useState(0);
+  const [activeLeisure, setActiveLeisure] = useState(0);
 
   const whatsappLink = useMemo(() => {
     const message = encodeURIComponent(
@@ -398,27 +407,42 @@ export default function LandingPage() {
             </motion.p>
 
             <motion.div className="leisure-items" variants={stagger}>
-              {leisureItems.map((item) => {
+              {leisureItems.map((item, index) => {
                 const Icon = item.icon;
+                const isActive = activeLeisure === index;
 
                 return (
-                  <motion.div className="leisure-item" key={item.title} variants={fadeUp}>
+                  <motion.button
+                    className={`leisure-item ${isActive ? "active" : ""}`}
+                    key={item.title}
+                    type="button"
+                    onClick={() => setActiveLeisure(index)}
+                    variants={fadeUp}
+                    aria-pressed={isActive}
+                  >
                     <Icon size={20} />
                     <span>{item.title}</span>
-                  </motion.div>
+                  </motion.button>
                 );
               })}
             </motion.div>
           </motion.div>
 
           <motion.figure
-            className="leisure-image reveal-image"
+            className="leisure-image leisure-carousel reveal-image"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
             variants={fadeLeft}
           >
-            <img src={auroraLazer} alt="Áreas de lazer do Aurora Residence" />
+            <img
+              src={leisureItems[activeLeisure].image}
+              alt={`${leisureItems[activeLeisure].title} do Aurora Residence`}
+            />
+            <figcaption>
+              <span>{String(activeLeisure + 1).padStart(2, "0")}</span>
+              {leisureItems[activeLeisure].title}
+            </figcaption>
           </motion.figure>
         </div>
       </section>
